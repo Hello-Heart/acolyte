@@ -6,14 +6,14 @@ class ReactiveMongo(scalacPlugin: Project) { self =>
   import Format._
 
   val reactiveResolvers = Seq(
-    "Typesafe Snapshots" at "http://repo.typesafe.com/typesafe/releases/",
+    "Typesafe Snapshots" at "https://repo.typesafe.com/typesafe/releases/",
     "Sonatype Snapshots".at(
       "https://oss.sonatype.org/content/repositories/snapshots/"))
 
   lazy val generatedClassDirectory = settingKey[File](
     "Directory where classes get generated")
 
-  val reactiveMongoVer = "0.18.1"
+  val reactiveMongoVer = "0.18.8"
 
   lazy val project =
     Project(id = "reactive-mongo", base = file("reactive-mongo")).
@@ -23,7 +23,7 @@ class ReactiveMongo(scalacPlugin: Project) { self =>
         resolvers ++= reactiveResolvers,
         libraryDependencies ++= Seq(
           "org.reactivemongo" %% "reactivemongo" % reactiveMongoVer % "provided",
-          "com.jsuereth" %% "scala-arm" % "2.1-SNAPSHOT",
+          "com.michaelpollmeier" %% "scala-arm" % "2.1",
           "org.slf4j" % "slf4j-simple" % "1.7.13" % Provided,
           "com.chuusai" %% "shapeless" % "2.3.3",
           "org.specs2" %% "specs2-core" % specsVer.value % Test)
